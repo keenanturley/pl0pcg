@@ -1,0 +1,6 @@
+# Compiled files
+*.o
+a.out
+
+# Main executable
+src/pl0pcg
