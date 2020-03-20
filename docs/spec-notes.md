@@ -25,6 +25,22 @@ The parser should go through that list and determine if the lexemes form a valid
 
 ## Errata
 
+There are several errors in the specification, which are documented below
+
+- Appendix A
+  - First symbolic representation should have `semicolonsym`, not `semicolon`
+  - Second symbolic representation should have `varsym`, not `intsym`
+
+- Appendix C
+  - Errors 4, 6, 12, 23: Procedures do not exist in this assignment
+  - Error 14, 15: Calls do not exist in this assignment
+
+- Appendix D
+  - References to procedure and call symbols are made in this section, but they should not exist for this assignment
+  - An `intsym` is used, where `varsym` should be
+  - These could be permissible considering the title of this section describes the parser as being for a "PL/0 like programming language", and not our specific variant
+
 - Appendix E
   - `char name[10];` should be `char name[12];`
   - Add `mark` to symbol struct
+  - `MAX_SYMBOL_TABLE_SIZE` should be 200
