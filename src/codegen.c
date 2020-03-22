@@ -1,7 +1,11 @@
 #include "codegen.h"
 #include "error.h"
 
-void emit_instruction(code_generator *generator, opcode op, int r, int l, 
+void init_code_generator(code_generator_t *generator) {
+    generator->code_size = 0;
+}
+
+void emit_instruction(code_generator_t *generator, opcode op, int r, int l, 
     int m) {
     // Throw an error and exit if we've went over our maximum code length
     if (generator->code_size == MAX_CODE_LENGTH) error(25);
