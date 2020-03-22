@@ -25,7 +25,7 @@ typedef struct token {
  * @param str The string representation of the token
  * @return token_type The token type of the string
  */
-token_type evaluate_token_type(char *str);
+token_type string_to_token(char *str);
 
 /**
  * @brief Returns string representation of given token

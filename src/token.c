@@ -11,7 +11,7 @@ char *token_type_strings[] = {
     "writesym", "readsym"
 };
 
-token_type evaluate_token_type(char *str) {
+token_type string_to_token(char *str) {
     if (strcmp(str, "null") == 0) {
         return nulsym;
     }
