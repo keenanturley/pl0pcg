@@ -31,6 +31,9 @@ There are several errors in the specification, which are documented below
   - First symbolic representation should have `semicolonsym`, not `semicolon`
   - Second symbolic representation should have `varsym`, not `intsym`
 
+- Appendix B
+  - `constdeclaration` should be `const-declaration`
+
 - Appendix C
   - Errors 4, 6, 12, 23: Procedures do not exist in this assignment
   - Error 14, 15: Calls do not exist in this assignment
