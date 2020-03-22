@@ -22,6 +22,13 @@ typedef struct code_generator_t {
 } code_generator_t;
 
 /**
+ * @brief Initialize the given code generator object
+ * 
+ * @param generator The generator to initialize
+ */
+void init_code_generator(code_generator_t *generator);
+
+/**
  * @brief Insert the given instruction into the code_generator_t
  * 
  * @param generator A pointer to the generator to instert into
