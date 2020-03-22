@@ -10,7 +10,7 @@ void init_parser(parser_t *parser, token_list_t *token_list) {
 }
 
 token *next_token(parser_t *parser) {
-    return get_token(parser->token_list, parser->token_cursor);
+    return get_token(parser->token_list, (parser->token_cursor)++);
 }
 
 void parse_program(parser_t *parser) {
