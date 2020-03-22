@@ -71,6 +71,9 @@ symbol creat_var_symbol(char name[12]);
 /**
  * @brief Copies the values from sym into the next available symbol
  * 
+ * After insertion, the symbol count is incremented, to prepare for the 
+ * next symbol insertion
+ * 
  * @param table Pointer to the table to insert a symbol into
  * @param sym Pointer to the symbol whose values to copy
  */
