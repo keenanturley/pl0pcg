@@ -9,6 +9,7 @@ typedef struct parser_t {
     token_list_t *token_list;
     int token_cursor;
     symbol_table_t symbol_table;
+    int register_cursor;
     code_generator_t code_generator;
 } parser_t;
 

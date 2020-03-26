@@ -6,6 +6,7 @@ void init_parser(parser_t *parser, token_list_t *token_list) {
     parser->token_list = token_list;
     parser->token_cursor = 0;
     init_symbol_table(&(parser->symbol_table));
+    parser->register_cursor = 0;
     init_code_generator(&(parser->code_generator));
 }
 
