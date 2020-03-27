@@ -40,4 +40,6 @@ void init_code_generator(code_generator_t *generator);
 void emit_instruction(code_generator_t *generator, opcode op, int r, int l, 
     int m);
 
+void emit_prepared_instruction(code_generator_t *generator, cg_instruction *i);
+
 #endif /* CODEGEN_H */

@@ -19,3 +19,14 @@ void emit_instruction(code_generator_t *generator, opcode op, int r, int l,
 
     (generator->code_size)++;
 }
+
+void emit_prepared_instruction(code_generator_t *generator, 
+    cg_instruction *i) {
+    emit_instruction(
+        generator, 
+        i->op, 
+        i->regiser_num, 
+        i->lex_level,
+        i->modifier
+    );
+}
