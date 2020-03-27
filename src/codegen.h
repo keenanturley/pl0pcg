@@ -29,17 +29,36 @@ typedef struct code_generator_t {
 void init_code_generator(code_generator_t *generator);
 
 /**
+ * @brief Create a instruction object
+ * 
+ * @param op Opcode of instruction
+ * @param r Register number
+ * @param l Lexicographical level
+ * @param m Modifier
+ * @return cg_instruction The resulting instruction
+ */
+cg_instruction create_instruction(opcode op, int r, int l, int m);
+
+/**
  * @brief Insert the given instruction into the code_generator_t
  * 
- * @param generator A pointer to the generator to instert into
- * @param op The opcode of the instruction
- * @param r The register number to operate with
- * @param l The lexicographical level
- * @param m The modifier
+ * @param generator Pinter to the generator to instert into
+ * @param op Opcode of instruction
+ * @param r Register number
+ * @param l Lexicographical level
+ * @param m Modifier
  */
 void emit_instruction(code_generator_t *generator, opcode op, int r, int l, 
     int m);
 
+/**
+ * @brief Insert the given instruction into the code generator
+ * 
+ * Uses emit_instruction with the given instructions values as arguments
+ * 
+ * @param generator Generator to insert instruction into
+ * @param i Instruction to insert
+ */
 void emit_prepared_instruction(code_generator_t *generator, cg_instruction *i);
 
 #endif /* CODEGEN_H */

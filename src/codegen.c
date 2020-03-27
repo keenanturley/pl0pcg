@@ -5,6 +5,11 @@ void init_code_generator(code_generator_t *generator) {
     generator->code_size = 0;
 }
 
+cg_instruction create_instruction(opcode op, int r, int l, int m) {
+    cg_instruction i = { op, r, l, m };
+    return i;
+}
+
 void emit_instruction(code_generator_t *generator, opcode op, int r, int l, 
     int m) {
     // Throw an error and exit if we've went over our maximum code length
