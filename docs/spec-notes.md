@@ -23,6 +23,24 @@ The general form of a lexeme is the symbol type (an integer) which in some cases
 
 The parser should go through that list and determine if the lexemes form a valid PL/0 program. To do this, the list should be fed through a recursive descent function that conforms to the language specification detailed in Appendix B.
 
+## Parsing Technique
+
+- Initialize the parser's token cursor to `0`. This is the first symbol to be looked at.
+- Only advance the token cursor when we want to consume a symbol.
+- If no error is encountered during parsing, the program is considered valid.
+- Look at current token for an optional symbol, otherwise get the next token.
+- After parsing a piece of grammer, the current token should be the token immediately following where that piece of grammar finished.
+- These are equivalent:
+  
+  ```c
+  next_token(parser);
+  token *t = current_token(parser);
+  ```
+
+  ```c
+  token *t = next_token(parser);
+  ```
+
 ## Errata
 
 There are several errors in the specification, which are documented below
