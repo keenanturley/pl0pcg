@@ -20,7 +20,8 @@ char *error_type_strings[] = {
     "Identifier expected after keyword write in write statement.",
     "Relational operator (=, <>, <, <=, >, >=) expected.",
     "Invalid expression. Expected identifier, number, or expression in parentheses.",
-    "Right parenthesis expected to close currently opened expression factor."
+    "Right parenthesis expected to close currently opened expression factor.",
+    "Code generator exceeded maximum code length."
 };
 
 void error(error_type e) {
