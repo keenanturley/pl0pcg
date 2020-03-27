@@ -32,7 +32,7 @@ void init_parser(parser_t *parser, token_list_t *token_list);
 token *current_token(parser_t *parser);
 
 /**
- * @brief Return the next token in the token list
+ * @brief Advances the cursor to and returns the next token in the token list
  * 
  * This function returns the equivalent of token_list[++token_cursor].
  * Therefore, after using this function, token_cursor will be the index 
