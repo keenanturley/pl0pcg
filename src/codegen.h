@@ -6,7 +6,7 @@
 typedef enum opcode {
     LIT = 1, RTN, LOD, STO, CAL, INC, JMP, JPC, SIO_WRITE,
     SIO_READ, SIO_END, NEG, ADD, SUB, MUL, DIV, ODD,
-    MOD, EQL, NEQ, LSS
+    MOD, EQL, NEQ, LSS, LEQ, GTR, GEQ
 } opcode;
 
 typedef struct cg_instruction {
