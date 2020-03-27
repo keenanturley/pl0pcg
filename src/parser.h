@@ -21,6 +21,17 @@ typedef struct parser_t {
 void init_parser(parser_t *parser, token_list_t *token_list);
 
 /**
+ * @brief Adds an instruction to the code generator
+ * 
+ * Effectively an alias to
+ * emit_prepared_instruction(&(parser->code_generator), i);
+ * 
+ * @param parser Parser whose code generator to use
+ * @param i Pointer to instruction to add
+ */
+void add_code(parser_t *parser, cg_instruction *i);
+
+/**
  * @brief Returns the token at the token_cursor index
  * 
  * Equivalent pseudocode:

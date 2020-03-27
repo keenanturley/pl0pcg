@@ -11,6 +11,10 @@ void init_parser(parser_t *parser, token_list_t *token_list) {
     init_code_generator(&(parser->code_generator));
 }
 
+void add_code(parser_t *parser, cg_instruction *i) {
+    emit_prepared_instruction(&(parser->code_generator), i);
+}
+
 token *current_token(parser_t *parser) {
     return get_token(parser->token_list, parser->token_cursor);
 }
