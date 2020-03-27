@@ -21,7 +21,14 @@ char *error_type_strings[] = {
     "Relational operator (=, <>, <, <=, >, >=) expected.",
     "Invalid expression. Expected identifier, number, or expression in parentheses.",
     "Right parenthesis expected to close currently opened expression factor.",
-    "Code generator exceeded maximum code length."
+    "Code generator exceeded maximum code length.",
+    "Undeclared identifier encountered.",
+    "Attempted to assign value to non-variable identifier.",
+    "Invalid identifier in factor, const or var expected.",
+    "Attempted to read value into a non-existant identifier",
+    "Attempted to read value into a non-variable identifier",
+    "Attempted to write value from a non-existant identifier",
+    "Attempted to write value from an identifier that is not a variable nor constant."
 };
 
 void error(error_type e) {
