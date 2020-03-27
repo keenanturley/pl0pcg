@@ -1,6 +1,7 @@
 #include "parser.h"
 #include "symbol.h"
 #include "codegen.h"
+#include "error.h"
 
 void init_parser(parser_t *parser, token_list_t *token_list) {
     parser->token_list = token_list;
@@ -10,8 +11,12 @@ void init_parser(parser_t *parser, token_list_t *token_list) {
     init_code_generator(&(parser->code_generator));
 }
 
+token *current_token(parser_t *parser) {
+    return get_token(parser->token_list, parser->token_cursor);
+}
+
 token *next_token(parser_t *parser) {
-    return get_token(parser->token_list, (parser->token_cursor)++);
+    return get_token(parser->token_list, ++(parser->token_cursor));
 }
 
 void parse_program(parser_t *parser) {

@@ -21,7 +21,22 @@ typedef struct parser_t {
 void init_parser(parser_t *parser, token_list_t *token_list);
 
 /**
+ * @brief Returns the token at the token_cursor index
+ * 
+ * Equivalent pseudocode:
+ *     return token_list[token_cursor];
+ * 
+ * @param parser The parser to read the token from
+ * @return token* Pointer to the current token
+ */
+token *current_token(parser_t *parser);
+
+/**
  * @brief Return the next token in the token list
+ * 
+ * This function returns the equivalent of token_list[++token_cursor].
+ * Therefore, after using this function, token_cursor will be the index 
+ * of the returned token.
  * 
  * @param parser The parser to read the token from
  * @return token* Pointer to the next token
