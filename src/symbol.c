@@ -27,7 +27,7 @@ symbol create_const_symbol(char name[12], int value) {
         value,          // Value
         0,              // Level 
         0,              // Address
-        0               // Mark
+        MARK_VALID      // Mark
     };
     return s;
 }
@@ -39,7 +39,7 @@ symbol creat_var_symbol(char name[12]) {
         0,              // Value
         0,              // Level 
         0,              // Address
-        0               // Mark
+        MARK_VALID      // Mark
     };
     return s;
 }
@@ -55,4 +55,19 @@ void insert_symbol(symbol_table_t *table, symbol *sym) {
     memcpy(s, sym, sizeof(symbol));
 
     (table->num_symbols)++;
+}
+
+symbol *search_symbol(symbol_table_t *table, char name[12]) {
+    // Search from back to front for symbol name
+    for (int i = table->num_symbols - 1; i >= 0; i--) {
+        symbol *s = &(table->symbols[i]);
+
+        // Symbol must be valid and have the same name
+        if (s->mark == MARK_VALID && strcmp(name, s->name) == 0) {
+            return &(table->symbols[i]);
+        }
+    }
+
+    // Symbol was not found, return NULL
+    return NULL;
 }

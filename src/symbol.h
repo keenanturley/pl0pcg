@@ -3,16 +3,27 @@
 
 #define MAX_SYMBOL_TABLE_SIZE 200
 
+/**
+ * @brief Kind of symbol
+ */
 typedef enum kind_type {
-    KIND_CONST = 1,
-    KIND_VAR = 2
+    KIND_CONST = 1, // Const symbol
+    KIND_VAR = 2    // Var symbol
 } kind_type;
 
+/**
+ * @brief Denotes the availability of a symbol
+ * 
+ */
 typedef enum mark_type {
-    MARK_IN_USE = 0,
-    MARK_UNAVAILABLE = 1
+    MARK_VALID = 0,     // Symbol is valid
+    MARK_INVALID = 1    // Symbol is no longer available
 } mark_type;
 
+/**
+ * @brief Structure used in a parser to keep track of identifiers
+ * 
+ */
 typedef struct symbol {
     kind_type kind;
     char name[12];
@@ -22,12 +33,21 @@ typedef struct symbol {
     mark_type mark;
 } symbol;
 
+/**
+ * @brief Collection of symbols indexed in a parser
+ * 
+ */
 typedef struct symbol_table_t {
     symbol symbols[MAX_SYMBOL_TABLE_SIZE];
-    int num_symbols;
-    int var_address_index;
+    int num_symbols;        // Current size of symbol table
+    int var_address_index;  // Next value to use as a variable's address
 } symbol_table_t;
 
+/**
+ * @brief Initializes a symbol table with appropriate values
+ * 
+ * @param table Pointer to the table to initialize
+ */
 void init_symbol_table(symbol_table_t *table);
 
 /**
@@ -79,6 +99,13 @@ symbol creat_var_symbol(char name[12]);
  */
 void insert_symbol(symbol_table_t *table, symbol *sym);
 
+/**
+ * @brief Searches for the symbol with the given name
+ * 
+ * @param table Table to search in
+ * @param name Name of the symbol to search for
+ * @return symbol* Pointer to the symbol to symbol if found, NULL otherwise
+ */
 symbol *search_symbol(symbol_table_t *table, char name[12]);
 
 #endif /* SYMBOL_H */
