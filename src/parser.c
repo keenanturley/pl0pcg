@@ -77,6 +77,16 @@ void parse_const_declaration(parser_t *parser) {
             }
             token *number = current_token(parser);
 
+            // Identifier must not be already declared on the same level
+            symbol *present = search_symbol(
+                &(parser->symbol_table),
+                identifier->name
+            );
+
+            if (present != NULL) {
+                error(IDENTIFIER_ALREADY_DECLARED);
+            }
+
             // Add const to symbol table
             symbol s = create_const_symbol(
                 identifier->name,
@@ -103,6 +113,16 @@ void parse_var_declaration(parser_t *parser) {
             // Check for identifier
             if (next_token(parser)->type != identsym) {
                 error(IDENTIFIER_EXPECTED_VAR_DECLARATION);
+            }
+
+            // Identifier must not be already declared on the same level
+            symbol *present = search_symbol(
+                &(parser->symbol_table),
+                current_token(parser)->name
+            );
+
+            if (present != NULL) {
+                error(IDENTIFIER_ALREADY_DECLARED);
             }
 
             // Create and insert var symbol
@@ -314,8 +334,6 @@ void parse_statement(parser_t *parser) {
             error(WRITE_FROM_NON_VAR_CONST_IDENTIFIER);
         }
 
-        
-
         if (s->kind == KIND_VAR) {
             // Load the variable from its address
             emit_instruction(
@@ -352,6 +370,7 @@ void parse_statement(parser_t *parser) {
 }
 
 void parse_condition(parser_t *parser) {
+    // EBNF: "odd" expression
     if (current_token(parser)->type == oddsym) {
         // Consume odd symbol
         next_token(parser);
@@ -365,7 +384,7 @@ void parse_condition(parser_t *parser) {
             0,
             0
         );
-    } else {
+    } else { // EBNF: expression rel-op expression
         parse_expression(parser);
 
         token_type rel_op = current_token(parser);
@@ -518,6 +537,7 @@ void parse_term(parser_t *parser) {
 }
 
 void parse_factor(parser_t *parser) {
+    // EBNF: ident
     if (current_token(parser)->type == identsym) {
         symbol *s = search_symbol(
             &(parser->symbol_table), 
@@ -528,6 +548,7 @@ void parse_factor(parser_t *parser) {
             error(UNDECLARED_IDENTIFIER);
         }
 
+        // Load variable
         if (s->kind == KIND_VAR) {
             emit_instruction(
                 &(parser->code_generator),
@@ -537,6 +558,7 @@ void parse_factor(parser_t *parser) {
                 s->address
             );
         } 
+        // Load literal constant
         else if (s->kind == KIND_CONST) {
             emit_instruction(
                 &(parser->code_generator),
@@ -550,6 +572,7 @@ void parse_factor(parser_t *parser) {
             error(NON_VAR_CONST_IDENTIFIER_FACTOR);
         }
     } 
+    // EBNF: number
     else if (current_token(parser)->type == numbersym) {
         emit_instruction(
             &(parser->code_generator),
@@ -559,6 +582,7 @@ void parse_factor(parser_t *parser) {
             atoi(current_token(parser)->name)
         );
     }
+    // EBNF: "(" expression ")"
     else if (current_token(parser)->type == lparentsym) {
         // Consume left parenthesis
         next_token(parser);

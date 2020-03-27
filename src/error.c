@@ -28,7 +28,8 @@ char *error_type_strings[] = {
     "Attempted to read value into a non-existant identifier",
     "Attempted to read value into a non-variable identifier",
     "Attempted to write value from a non-existant identifier",
-    "Attempted to write value from an identifier that is not a variable nor constant."
+    "Attempted to write value from an identifier that is not a variable nor constant.",
+    "Attempted to redeclare existing identifier."
 };
 
 void error(error_type e) {
