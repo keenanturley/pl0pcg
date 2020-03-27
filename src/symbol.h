@@ -83,6 +83,8 @@ symbol create_const_symbol(char name[12], int value);
  * on insertion into the table. The address cannot be known without access to 
  * the symbol table we want to insert into.
  * 
+ * Note: Variables should not store nor update their value property
+ * 
  * @param name Name of the identifier
  * @return symbol The created symbol
  */
