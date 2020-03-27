@@ -88,7 +88,7 @@ symbol create_const_symbol(char name[12], int value);
  * @param name Name of the identifier
  * @return symbol The created symbol
  */
-symbol creat_var_symbol(char name[12]);
+symbol create_var_symbol(char name[12]);
 
 /**
  * @brief Copies the values from sym into the next available symbol

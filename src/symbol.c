@@ -32,7 +32,7 @@ symbol create_const_symbol(char name[12], int value) {
     return s;
 }
 
-symbol creat_var_symbol(char name[12]) {
+symbol create_var_symbol(char name[12]) {
     symbol s = {
         KIND_VAR,       // Kind
         name,           // Name
